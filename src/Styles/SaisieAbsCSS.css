@@ -1,0 +1,92 @@
+.container{
+        display:flex;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+        padding: 20px;
+    
+}
+
+.title{
+    margin:30px; 
+    color: var(--accent-color);
+}
+
+table {
+    width: 80%; 
+    border: var(--accent-color); 
+    border-radius: 10px;
+    background-color: var(--lighter-color);
+    box-shadow: 0 0 10px rgba(0, 0, 12 ,.2);
+    padding: 20px;
+    border-spacing: 8px;
+  }
+
+
+  th{
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center; 
+    
+}
+
+
+td{
+    text-align: center; 
+    border-radius: 10px;
+    border: 1px var(--accent-color) solid;
+}
+
+input{
+    border-radius: 10px;
+    padding:10px;
+    width:100%; 
+    background: var(--light-color);
+    border: 1px var(--light-color) solid;
+}
+
+
+input[type="checkbox"] {
+    width: 22px;
+    height: 22px; 
+    background-color: var(--light-color);   
+}
+
+
+input[type="checkbox"]:checked::after {
+    content: '✔'; /* Ajoute une coche personnalisée */
+    color: white; /* couleur de la coche */
+    font-size: 18px; /* taille de la coche */
+    position: absolute;
+    top: 2px;
+    left: 5px;
+}
+
+.btn{
+    padding:10px; 
+    margin:5px; 
+    background-color: var(--light-color);
+    border: none;
+    border-radius: 10px;
+}
+
+
+.btnSubmit{
+    width:25%; 
+    padding:10px; 
+    margin:24px; 
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 10px;
+    color: var(--lighter-color);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.btnSubmit:hover , .btn:hover{
+    background-color: gainsboro;
+    color: var(--accent-color);
+    cursor: pointer;
+}
