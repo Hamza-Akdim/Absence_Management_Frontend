@@ -1,83 +1,72 @@
-import '../Styles/SaisieAbsCSS.css'
-import { useState } from 'react';
-import { useEffect } from 'react';
+import '../Styles/SaisieAbsCSS.css';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+function HistoriqueAbsence() {
+    const [etudiants, setEtudiants] = useState([]);
+    const [absences, setAbsences] = useState([]);
 
-function HistoriqueAbscence(){
-    // Liste des étudiants
-    const [etudiants, setEtudiants] = useState([]); 
-     
-
-    // Utilisation de useEffect pour simuler le remplissage de données depuis une API
+    // Utilisation de useEffect pour récupérer les données depuis l'API
     useEffect(() => {
-        // Simuler des données d'étudiants venant de la BDD
-        const Essai = [
-            { nom: 'Malki', prenom: 'Nawal' },
-            { nom: 'Malki', prenom: 'Amine' },
-        ];
-        setEtudiants(Essai);
+        // Récupérer les absences depuis l'API (exemple avec fetch)
+        fetch('http://localhost:8080/api/absences')  // L'URL de votre API backend
+            .then(response => response.json())
+            .then(data => setAbsences(data))  // Mettre à jour l'état avec les absences
+            .catch(error => console.error('Erreur:', error));
+
+        // Récupérer les étudiants (peut-être une autre API ou une partie de la même)
+        fetch('http://localhost:8080/api/students')  // L'URL de votre API backend pour les étudiants
+            .then(response => response.json())
+            .then(data => setEtudiants(data))  // Mettre à jour l'état avec les étudiants
+            .catch(error => console.error('Erreur:', error));
     }, []);
 
-    // Il faut par la suite définir la fonction qui gérera le changement des valeurs d'absence
-    // const handleAbsenceChange = (e, id) => {
-        
-    // };
-    return(
-        
+    return (
         <div className='container'>
-        <h1 className='title'>Historique des abscences</h1>
-        <table className="abs-table">
+            <h1 className='title'>Historique des absences</h1>
+            <table className="abs-table">
                 <thead>
                     <tr>
-                        
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Date</th>
                         <th>Heure</th>
-                        
                         <th>Gestion</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {etudiants.map((etudiant) => (
-                        <tr key={etudiant.id}>
-                            
-                            <td>{etudiant.nom}</td>
-                            <td>{etudiant.prenom}</td>
+                    {absences.map((absence) => (
+                        <tr key={absence.id}>
+                            <td>{absence.etudiant.nom}</td>
+                            <td>{absence.etudiant.prenom}</td>
                             <td>
                                 <input
-                                className='dateInput'
+                                    className='dateInput'
                                     type="date"
-                                    name="date"
-                                    // Value sera set à la valeur qu'on récupère de la bdd 
-                                    // onChange={(e) => handleAbsenceChange(e, etudiant.id)}
+                                    value={absence.date}  // Valeur provenant de la BDD
+                                    // onChange={(e) => handleAbsenceChange(e, absence.id)}
                                 />
-                                </td>
+                            </td>
                             <td>
                                 <input
-                                className='hourInput'
+                                    className='hourInput'
                                     type="time"
-                                    name="hour"
-                                    // Same Value sera set à la valeur récupérée de la bdd 
-                                    // onChange={(e) => handleAbsenceChange(e, etudiant.id)}
+                                    value={absence.heure}  // Valeur provenant de la BDD
+                                    // onChange={(e) => handleAbsenceChange(e, absence.id)}
                                 />
                             </td>
                             <td>
                                 <Link to="/modfication">
-                                <button className='btn'>Modifier</button>
+                                    <button className='btn'>Modifier</button>
                                 </Link>
-                                
                                 <button className='btn'>Supprimer</button>
-                                
                             </td>
-                            
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
-    )
+    );
 }
 
-export default HistoriqueAbscence;
+export default HistoriqueAbsence;

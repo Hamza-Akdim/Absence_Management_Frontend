@@ -90,3 +90,10 @@ input[type="checkbox"]:checked::after {
     color: var(--accent-color);
     cursor: pointer;
 }
+
+
+.firstName , .lastName , .course{
+    width: 75%;
+    margin-bottom: 14px;
+    border: 1px solid var(--accent-color);
+}
