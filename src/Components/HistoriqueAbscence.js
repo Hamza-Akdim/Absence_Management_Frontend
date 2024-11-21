@@ -1,6 +1,7 @@
 import '../Styles/SaisieAbsCSS.css'
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function HistoriqueAbscence(){
@@ -63,8 +64,12 @@ function HistoriqueAbscence(){
                                 />
                             </td>
                             <td>
+                                <Link to="/modfication">
                                 <button className='btn'>Modifier</button>
+                                </Link>
+                                
                                 <button className='btn'>Supprimer</button>
+                                
                             </td>
                             
                         </tr>
