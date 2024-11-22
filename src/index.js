@@ -1,13 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './Styles/index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./Styles/index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import ProfProvider from "./Context/ProfProvider";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <ProfProvider>
+      <App />
+    </ProfProvider>
   </React.StrictMode>
 );
 

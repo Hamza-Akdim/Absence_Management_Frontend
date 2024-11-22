@@ -14,7 +14,7 @@ function App() {
         <Routes>
           {/* Définition des routes pour faire la navigation au sein de notre SPA */}
           <Route path='/' element={<AuthProf />}/>
-          <Route path="/welc" element={<Welcome />} /> 
+          <Route path="/gestion-absence" element={<Welcome />} /> 
           <Route path="/saisie-absence" element={<SaisieAbscence />} />
           <Route path="/historique-absence" element={<HistoriqueAbscence />}/>
           <Route path="/modfication" element={<ModificationCard />}/>
