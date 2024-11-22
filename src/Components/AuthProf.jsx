@@ -3,8 +3,8 @@ import "../Styles/WelcomeCSS.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { ProfState } from "../Context/ProfProvider";
-import { useToast } from "@chakra-ui/react";
-import { useHistory } from "react-router-dom";
+// import { useToast } from "@chakra-ui/react";
+// import { useHistory } from "react-router-dom";
 
 
 function AuthProf() {
@@ -12,20 +12,20 @@ function AuthProf() {
   const [lastName, setLastName] = useState();
   const [course, setCourse] = useState();
 
-  const { setProfId } = ProfState();
+  const { profId,setProfId } = ProfState();
 
 // const history = useHistory();
-  const toast = useToast();
+  // const toast = useToast();
 
   const submitHandker = async () => {
     if (!firstName || !lastName || !course) {
-      toast({
-        title: "Remplissez tous les champs",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
+      // toast({
+      //   title: "Remplissez tous les champs",
+      //   status: "warning",
+      //   duration: 5000,
+      //   isClosable: true,
+      //   position: "bottom",
+      // });
 
       return;
     }
@@ -48,44 +48,46 @@ function AuthProf() {
       );
 
       setProfId(data);
+      console.log(profId)
 
-      toast({
-        title: "succès",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
+      // toast({
+      //   title: "succès",
+      //   status: "success",
+      //   duration: 5000,
+      //   isClosable: true,
+      //   position: "bottom",
+      // });
 
     // history.push("gestion-absence");
 
     } catch (error) {
-      if (error.response) {
-        const { data } = error.response;
-        toast({
-          title: `Error: ${data}`,
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-          position: "bottom",
-        });
-      } else if (error.request) {
-        toast({ 
-          title: "Network Error",
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-          position: "bottom",
-        });
-      } else {
-        toast({
-          title: "Error",
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-          position: "bottom",
-        });
-      }
+      // if (error.response) {
+      //   const { data } = error.response;
+      //   toast({
+      //     title: `Error: ${data}`,
+      //     status: "error",
+      //     duration: 5000,
+      //     isClosable: true,
+      //     position: "bottom",
+      //   });
+      // } else if (error.request) {
+      //   toast({ 
+      //     title: "Network Error",
+      //     status: "error",
+      //     duration: 5000,
+      //     isClosable: true,
+      //     position: "bottom",
+      //   });
+      // } else {
+      //   toast({
+      //     title: "Error",
+      //     status: "error",
+      //     duration: 5000,
+      //     isClosable: true,
+      //     position: "bottom",
+      //   });
+      // }
+
     }
   };
 
