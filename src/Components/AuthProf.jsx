@@ -17,28 +17,33 @@ function AuthProf() {
 // const history = useHistory();
   // const toast = useToast();
 
-  const submitHandker = async () => {
-    if (!firstName || !lastName || !course) {
-      // toast({
-      //   title: "Remplissez tous les champs",
-      //   status: "warning",
-      //   duration: 5000,
-      //   isClosable: true,
-      //   position: "bottom",
-      // });
+  const submitHandler = async () => {
+    console.log({
+      firstName,
+      lastName,
+      course,
+    });
+    // if (!firstName || !lastName || !course) {
+    //   // toast({
+    //   //   title: "Remplissez tous les champs",
+    //   //   status: "warning",
+    //   //   duration: 5000,
+    //   //   isClosable: true,
+    //   //   position: "bottom",
+    //   // });
 
-      return;
-    }
+    //   return;
+    // }
+    try {
 
     const config = {
       headers: {
         "Content-type": "application/json",
       },
     };
-
-    try {
-      const { data } = await axios.post(
-        "/api/prof/auth",
+    
+    const { data } = await axios.post(
+      "api/prof/auth",
         {
           firstName,
           lastName,
@@ -48,7 +53,7 @@ function AuthProf() {
       );
 
       setProfId(data);
-      console.log(profId)
+      console.log(data);
 
       // toast({
       //   title: "succès",
@@ -87,6 +92,7 @@ function AuthProf() {
       //     position: "bottom",
       //   });
       // }
+      console.log(error)
 
     }
   };
@@ -124,7 +130,7 @@ function AuthProf() {
 
           {/*Lien vers la page de saisie des abscences  */}
           <Link to="/welc">
-            <button type="submit" onClick={submitHandker}>
+            <button type="submit" onClick={submitHandler}>
               Suivant
             </button>
           </Link>
